@@ -1,0 +1,26 @@
+.tim-wrapper{
+  width:100vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: transparent;
+  position: fixed;
+}
+
+.tim-img{
+  height:100vh;
+  margin:auto;
+}
+
+.tim-img-shadow{
+  height:100vh;
+  margin:auto;
+  position: absolute;
+  filter: brightness(0%) blur(10px);
+  z-index: -1;
+  margin-left:4vh;
+  margin-top:4vh;
+  opacity: 0.5;
+}

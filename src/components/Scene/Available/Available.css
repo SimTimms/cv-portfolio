@@ -1,0 +1,21 @@
+.available{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-family: 'AudioWide', sans-serif;
+    user-select: none;
+    font-size: 1.1vh;
+    width:100vw;
+    margin-left:-56vw;
+    text-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+}
+
+.available h1{
+    margin:0
+}
+
+.available h2{
+    margin:0
+}

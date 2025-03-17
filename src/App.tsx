@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useRef } from "react";
+import "./App.css";
+import Scene from "./components/Scene/Scene";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const divRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    document.addEventListener("mousemove", (event) => {
+      const x = event.clientX / window.innerWidth;
+      const y = event.clientY / window.innerHeight;
+      changeBackground(x, y);
+    });
+  }, [divRef.current]);
 
+  function changeBackground(x: number, y: number) {
+    const oneDefault = 23;
+    const oneRange = 20 * y;
+    const twoDefault = 293;
+    const twoRange = 20 * x;
+    const threeDefault = 193;
+    const threeRange = 20 * x * y;
+    const colOne = `hsl(${oneDefault + oneRange}deg, 17%, 58%)`;
+    const colTwo = `hsl(${twoDefault + twoRange}deg, 67%, 48%)`;
+    const colThree = `hsl(${threeDefault + threeRange}deg, 37%, 28%)`;
+    divRef.current!.style.background = `linear-gradient(0deg,${colOne} 0%,${colTwo} 30%,${colThree} 100%)`;
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div ref={divRef} className="app">
+      <Scene />
+    </div>
+  );
 }
 
-export default App
+export default App;

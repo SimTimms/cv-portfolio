@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap");
+
+.tim-simms{
+    width:100vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: transparent;
+    position: fixed;
+}
+
+.tim-simms h1{
+    text-shadow: 1vw 1vw 2vw rgba(0,0,0,0.5);
+    font-size:  clamp(10vw, 12vh, 12vw);
+    color:#fff;
+    font-family: 'Libre Barcode 39 Text';
+}
