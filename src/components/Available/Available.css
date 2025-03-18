@@ -4,18 +4,27 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: flex-end;
-    font-family: 'AudioWide', sans-serif;
+    font-family: 'Roboto', sans-serif;
     user-select: none;
     font-size: 1.1vh;
     width:100vw;
-    margin-left:-56vw;
     text-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+    padding:1vh;
+    box-sizing: border-box;
+    position: fixed;
 }
 
 .available h1{
-    margin:0
+    margin:0;
+    font-family: 'AudioWide', sans-serif;
 }
 
 .available h2{
     margin:0
+}
+
+.contact-link{
+    color:#fff;
+    font-size: 1.4em;
+    text-decoration: none;
 }

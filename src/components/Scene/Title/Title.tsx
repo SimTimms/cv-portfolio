@@ -10,7 +10,6 @@ import {
 import * as THREE from "three";
 import Butterfly from "../Butterfly/Butterfly";
 import { useRef } from "react";
-import Available from "../Available/Available";
 
 export default function Tim() {
   const barcode = useLoader(GLTFLoader, "./models/barcode.glb");
@@ -41,7 +40,6 @@ export default function Tim() {
 
   return (
     <group position={[0, 0, 1]}>
-      <Available />
       <group
         position={[-5, 4, 0.3]}
         rotation={[-Math.PI * 0.5, -Math.PI * 0.15, -Math.PI]}

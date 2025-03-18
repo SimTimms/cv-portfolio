@@ -95,21 +95,24 @@ export default function Screen() {
     if (node instanceof THREE.Mesh) {
       if (node.name.indexOf("screen3") !== -1) {
         node.material = videoMaterial;
-      }
-      if (node.name.indexOf("screen2") !== -1) {
+      } else if (node.name.indexOf("screen2") !== -1) {
         node.material = videoMaterialRoom;
-      }
-      if (node.name.indexOf("screen4") !== -1) {
+      } else if (node.name.indexOf("screen4") !== -1) {
         node.material = videoMaterialWorld;
-      }
-      if (node.name === "screen") {
+      } else if (node.name === "screen") {
         node.material = videoMaterialTamagotchi;
+      } else {
+        node.material = new THREE.MeshStandardMaterial({
+          color: 0x666666,
+          roughness: 0.25,
+          metalness: 0.5,
+        });
       }
     }
   });
 
   return (
-    <group position={[-10, -8, 0]}>
+    <group position={[-13, -8, 0]}>
       <primitive
         object={screen.scene}
         scale={1.3}
