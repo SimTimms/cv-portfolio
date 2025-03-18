@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     if (!divRef.current) return;
-    addMouseListener(divRef.current, (x, y) => {
+    addMouseListener((x, y) => {
       divRef.current && changeBackground(x, y, divRef.current);
     });
   }, [divRef.current]);

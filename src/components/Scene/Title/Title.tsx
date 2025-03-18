@@ -1,21 +1,18 @@
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import {
   barcodeMaterial,
   barcodeMaterialBack,
-  splashMaterial,
   planeMaterial,
   planeShadowMaterial,
 } from "../../../materials";
 import * as THREE from "three";
 import Butterfly from "../Butterfly/Butterfly";
-import { useRef } from "react";
+import Splash from "../Splash/Splash";
 
 export default function Tim() {
   const barcode = useLoader(GLTFLoader, "./models/barcode.glb");
-  const splash = useLoader(GLTFLoader, "./models/splash.glb");
   const planeGeometry = new THREE.PlaneGeometry(1, 0.2);
-  const splashRef = useRef<THREE.Mesh>(null);
 
   barcode.scene.traverse(function (node: any) {
     if (!(node instanceof THREE.Mesh)) return;
@@ -24,18 +21,6 @@ export default function Tim() {
     } else {
       node.material = barcodeMaterialBack;
     }
-  });
-
-  splash.scene.traverse(function (node: any) {
-    if (!(node instanceof THREE.Mesh)) return;
-    node.material = splashMaterial;
-    node.receiveShadow = true;
-    node.castShadow = true;
-  });
-
-  useFrame((_, delta) => {
-    if (!splashRef.current) return;
-    splashRef.current.rotation.y += 0.1 * delta;
   });
 
   return (
@@ -47,21 +32,13 @@ export default function Tim() {
       >
         <Butterfly />
       </group>
-
+      <Splash />
       <primitive
         object={barcode.scene}
         rotation={[0, -Math.PI * 0.5, 0]}
         scale={[1, 0.8, 1.1]}
         position={[0, 3.4, 0]}
       />
-      <group ref={splashRef}>
-        <primitive
-          object={splash.scene}
-          scale={3}
-          position={[0, 0, -1]}
-          material={splashMaterial}
-        />
-      </group>
       <mesh
         geometry={planeGeometry}
         material={planeMaterial}
