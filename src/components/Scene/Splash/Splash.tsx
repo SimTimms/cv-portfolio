@@ -1,5 +1,5 @@
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import { splashMaterial } from "../../../materials";
 import * as THREE from "three";
 import { useRef, useEffect } from "react";
@@ -11,7 +11,7 @@ export default function Splash() {
 
   useEffect(() => {
     if (!splashRef.current) return;
-    addMouseListener((x, y) => {
+    addMouseListener((x) => {
       if (splashRef.current) splashRef.current.rotation.y = x * 0.4;
     });
   }, [splashRef.current]);
