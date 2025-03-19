@@ -1,0 +1,18 @@
+.back-wrapper{
+    position: fixed;
+    left: 0px;
+    z-index: 10;
+}
+
+.back-wrapper button{
+    background:transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 1vh;
+    font-size: 2.1vh;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+}

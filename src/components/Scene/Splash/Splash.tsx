@@ -12,7 +12,8 @@ export default function Splash() {
   useEffect(() => {
     if (!splashRef.current) return;
     addMouseListener((x) => {
-      if (splashRef.current) splashRef.current.rotation.y = x * 0.4;
+      if (splashRef.current)
+        splashRef.current.rotation.y = Math.PI * 0.6 + x * 0.4;
     });
   }, [splashRef.current]);
 
@@ -24,7 +25,7 @@ export default function Splash() {
   });
 
   return (
-    <group ref={splashRef}>
+    <group ref={splashRef} rotation={[0, Math.PI * 0.6, 0]}>
       <primitive
         object={splash.scene}
         scale={3}

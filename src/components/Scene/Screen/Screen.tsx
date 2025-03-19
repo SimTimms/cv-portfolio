@@ -1,3 +1,4 @@
+import "./Screen.css";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 import * as THREE from "three";
@@ -8,6 +9,9 @@ import tamagotchi from "../../../assets/tamagotchi.mp4";
 import room from "../../../assets/room.mp4";
 import { useMemo } from "react";
 import Projects from "../Projects/Projects";
+import AiAssisted from "../AiAssisted/AiAssisted";
+import { Html } from "@react-three/drei";
+import { ActionContext, SCENES } from "../../../App";
 
 export default function Screen() {
   const screen = useLoader(GLTFLoader, "./models/tv.glb");
@@ -17,7 +21,6 @@ export default function Screen() {
     vid.crossOrigin = "Anonymous";
     vid.loop = true;
     vid.muted = true;
-    vid.play();
 
     const videoTexture = new THREE.VideoTexture(vid);
     videoTexture.flipY = false;
@@ -37,7 +40,6 @@ export default function Screen() {
     vidWorld.crossOrigin = "Anonymous";
     vidWorld.loop = true;
     vidWorld.muted = true;
-    vidWorld.play();
 
     const videoTextureWorld = new THREE.VideoTexture(vidWorld);
     videoTextureWorld.flipY = false;
@@ -57,7 +59,6 @@ export default function Screen() {
     vidWorld.crossOrigin = "Anonymous";
     vidWorld.loop = true;
     vidWorld.muted = true;
-    vidWorld.play();
 
     const videoTextureWorld = new THREE.VideoTexture(vidWorld);
     videoTextureWorld.flipY = false;
@@ -77,7 +78,6 @@ export default function Screen() {
     vidWorld.crossOrigin = "Anonymous";
     vidWorld.loop = true;
     vidWorld.muted = true;
-    vidWorld.play();
 
     const videoTextureWorld = new THREE.VideoTexture(vidWorld);
     videoTextureWorld.flipY = false;
@@ -113,6 +113,19 @@ export default function Screen() {
 
   return (
     <group position={[-13, -8, 0]}>
+      <ActionContext.Consumer>
+        {({ sceneNumber }) => {
+          if (sceneNumber !== SCENES.PROJECTS) return null;
+          return (
+            <Html position={[-10, 4, 0]} className="html-label">
+              <a href="https://tamagotchi-chi.vercel.app/" target="_blank">
+                <b>Tama-not-chi</b>
+              </a>
+              <span>React | Three.js | Typescript</span>
+            </Html>
+          );
+        }}
+      </ActionContext.Consumer>
       <primitive
         object={screen.scene}
         scale={1.3}
@@ -126,6 +139,7 @@ export default function Screen() {
         <Shadow />
       </group>
       <Projects />
+      <AiAssisted />
     </group>
   );
 }
