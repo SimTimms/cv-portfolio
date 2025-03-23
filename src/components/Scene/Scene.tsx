@@ -12,7 +12,7 @@ function Scene() {
   return (
     <Canvas
       className="canvas"
-      camera={{ fov: 45, position: [0, 10, 30], far: 200 }}
+      camera={{ fov: 44, position: [0, 10, 30], far: 200 }}
       shadows
     >
       {/* <ScriptedCamera />*/}
