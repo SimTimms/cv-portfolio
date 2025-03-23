@@ -8,8 +8,8 @@ export default function RotateUI() {
   const rotateMaterial = new THREE.MeshBasicMaterial({
     map: timTexture,
     transparent: true,
-    opacity: 0.6,
-    depthTest: false,
+    opacity: 0.2,
+    depthWrite: false,
   });
   timTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -18,8 +18,8 @@ export default function RotateUI() {
       geometry={planeGeometry}
       material={rotateMaterial}
       rotation={[-Math.PI * 0.5, 0, 0]}
-      position={[0, -8, 0]}
-      scale={4}
+      position={[0, -8.7, 0]}
+      scale={10}
     />
   );
 }

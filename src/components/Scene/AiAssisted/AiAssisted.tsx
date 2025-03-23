@@ -25,15 +25,15 @@ export default function AiAssisted() {
         geometry={planeGeometry}
         material={humanMaterial}
         rotation={[-Math.PI * 0, -Math.PI * 0.17, 0]}
-        position={[29.3, 3.1, -3.3]}
-        scale={8}
+        position={[32, 0.5, 2.3]}
+        scale={5}
       />
       <mesh
         geometry={planeGeometry}
         material={rotateMaterial}
         rotation={[-Math.PI * 0.5, 0, -Math.PI * 0.16]}
-        position={[26.3, -1.1, 5.3]}
-        scale={10}
+        position={[30, -1.0, 5.3]}
+        scale={4}
       />
     </>
   );

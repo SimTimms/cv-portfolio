@@ -136,7 +136,11 @@ export default function Screen() {
         rotation={[0, Math.PI * 0.3, 0]}
         scale={[4, 1, 2]}
       >
-        <Shadow />
+        <Shadow
+          rotation={[-Math.PI * 0.5, 0, 0]}
+          position={[0, -10, 0]}
+          scale={4}
+        />
       </group>
       <Projects />
       <AiAssisted />

@@ -1,23 +1,35 @@
 import * as THREE from "three";
 import shadow from "../../../assets/shadow.png";
 
-export default function Shadow() {
+interface ShadowProps {
+  position: [number, number, number];
+  scale: number;
+  rotation: [number, number, number];
+  opacity?: number;
+}
+export default function Shadow({
+  position,
+  scale,
+  rotation,
+  opacity,
+}: ShadowProps) {
   const planeGeometry = new THREE.PlaneGeometry(1, 1);
   const textureLoader = new THREE.TextureLoader();
   const shadowTexture = textureLoader.load(shadow);
   const shadowMaterial = new THREE.MeshBasicMaterial({
     map: shadowTexture,
     transparent: true,
-    opacity: 0.6,
+    opacity: opacity ? opacity : 0.6,
+    depthWrite: false,
   });
 
   return (
     <mesh
       geometry={planeGeometry}
       material={shadowMaterial}
-      rotation={[-Math.PI * 0.5, 0, 0]}
-      position={[0, -10, 0]}
-      scale={4}
+      rotation={rotation}
+      position={position}
+      scale={scale}
     />
   );
 }

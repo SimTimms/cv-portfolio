@@ -12,5 +12,5 @@ export default function changeBackground(
   const colOne = `hsl(${oneDefault + oneRange}deg, 17%, 58%)`;
   const colTwo = `hsl(${twoDefault + twoRange}deg, 67%, 48%)`;
   const colThree = `hsl(${threeDefault + threeRange}deg, 37%, 28%)`;
-  divRef.style.background = `linear-gradient(0deg,${colOne} 0%,${colTwo} 30%,${colThree} 100%)`;
+  divRef.style.background = `linear-gradient(0deg,${colOne} 0%,${colTwo} 60%,${colThree} 100%)`;
 }
