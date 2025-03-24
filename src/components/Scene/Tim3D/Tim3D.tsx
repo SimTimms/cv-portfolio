@@ -78,7 +78,7 @@ export default function Tim3D() {
   return (
     <group
       ref={groupRef}
-      position={[0, -1.3, 0]}
+      position={[-2000, -1.3, 0]}
       rotation={[0, Math.PI * 0.4, 0]}
     >
       <Shadow

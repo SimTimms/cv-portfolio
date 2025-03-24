@@ -1,37 +1,50 @@
 import "./Scene.css";
+import { Suspense, lazy } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Html } from "@react-three/drei";
 import Title from "./Title/Title";
 import RotateUI from "./RotateUI/RotateUI";
-import Screen from "./Screen/Screen";
-import Tim3D from "./Tim3D/Tim3D";
-import Flowers from "./Flowers/Flowers";
+const Screen = lazy(() => import("./Screen/Screen"));
+const Tim3D = lazy(() => import("./Tim3D/Tim3D"));
+const Flowers = lazy(() => import("./Flowers/Flowers"));
 import Rocket from "./Rocket/Rocket";
 import Trees from "./Trees/Trees";
+import Sun from "./Sun/Sun";
 function Scene() {
   return (
     <Canvas
       className="canvas"
-      camera={{ fov: 44, position: [0, 10, 30], far: 200 }}
+      camera={{ fov: 44, position: [0, 10, 30], far: 300 }}
       shadows
     >
-      {/* <ScriptedCamera />*/}
-      <directionalLight intensity={1.5} position={[1, 1, 2]} castShadow />
-      <ambientLight intensity={0.25} />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        maxZoom={1}
-        minPolarAngle={Math.PI / 2.6}
-        maxPolarAngle={Math.PI - Math.PI / 2.1}
-      />
-      <Title />
-      <RotateUI />
-      <Screen />
-      <Tim3D />
-      <Flowers />
-      <Rocket />
-      <Trees />
+      <Suspense fallback={<Html center>Loading...</Html>}>
+        {/* <ScriptedCamera />*/}
+        <directionalLight intensity={1.5} position={[1, 1, 2]} castShadow />
+        <ambientLight intensity={0.25} />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          maxZoom={1}
+          minPolarAngle={Math.PI / 2.6}
+          maxPolarAngle={Math.PI - Math.PI / 2.1}
+        />
+        <Sun />
+        <Title />
+        <RotateUI />
+        <Suspense fallback={<Html center>Loading...</Html>}>
+          <Screen />
+        </Suspense>
+        <Suspense fallback={<Html center>Loading...</Html>}>
+          <Tim3D />
+        </Suspense>
+        <Suspense fallback={<Html center>Loading...</Html>}>
+          <Flowers />
+        </Suspense>
+        <Rocket />
+        <Suspense fallback={<Html center>Loading...</Html>}>
+          <Trees />
+        </Suspense>
+      </Suspense>
     </Canvas>
   );
 }
