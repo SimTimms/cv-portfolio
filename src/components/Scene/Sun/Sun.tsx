@@ -20,8 +20,8 @@ export default function Sun() {
         geometry={planeGeometry}
         material={humanMaterial}
         rotation={[-Math.PI * 0, 0, 0]}
-        position={[0, -44.5, -150]}
-        scale={20}
+        position={[-30, -44.5, -150]}
+        scale={7}
       />
     </>
   );
