@@ -10,6 +10,7 @@ const Flowers = lazy(() => import("./Flowers/Flowers"));
 import Rocket from "./Rocket/Rocket";
 import Trees from "./Trees/Trees";
 import Sun from "./Sun/Sun";
+import Wally from "./Wally/Wally";
 function Scene() {
   return (
     <Canvas
@@ -33,6 +34,9 @@ function Scene() {
         <RotateUI />
         <Suspense fallback={<Html center>Loading...</Html>}>
           <Screen />
+        </Suspense>
+        <Suspense fallback={<Html center>Loading...</Html>}>
+          <Wally />
         </Suspense>
         <Suspense fallback={<Html center>Loading...</Html>}>
           <Tim3D />
